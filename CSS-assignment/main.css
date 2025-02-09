@@ -1,0 +1,99 @@
+.open-sans-<uniquifier> {
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  * {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h1, h2 {
+    color: skyblue;
+    margin-bottom: 30px;
+    font-size: 50px;
+}
+
+ul {
+    border: 2px solid green;
+    width: fit-content;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.container {
+    display: flex;
+    gap: 15px; 
+    width: 60%; 
+    margin: 0 auto;
+}
+
+.food-picture {
+    width: 250px; 
+    height: 200px;
+    background-image: url('https://northofbleu.com/wp-content/uploads/2022/04/How-long-34to-bake-lasagna-recipe-800-%C3%97-600-px.png');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid black;
+}
+
+.food-description {
+    max-width: 350px;
+    font-size: 18px;
+}
+
+tr:nth-child(even) {
+    background-color: #11a065;
+}
+
+
+
+.form-group {
+    display: contents; 
+}
+
+label {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.user-form {
+    display: grid;
+    gap: 10px;
+    width: 50%;
+    padding: 20px;
+    align-items: baseline;
+    justify-items: stretch;
+}
+
+.submit-button {
+    width: 25%;
+}
+
+.form-title {
+    margin-top: 10px; 
+    margin-bottom: 0;
+    margin-left: 15px;
+}
+
+
+.social-icons-container {
+    position: fixed;
+    top: 100px;
+    right: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.social-icon {
+    width: 35px; 
+    height: 35px;
+    border-radius: 50%;
+}
