@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        window.onload = function() {
+            let fahrenheit = prompt("Enter the temperature in Fahrenheit: ");
+            fahrenheit = parseFloat(fahrenheit);
+            let celsiusConverted = (fahrenheit - 32) * 5/9;
+            alert("The converted temperature in Celsius is: " + celsiusConverted.toFixed(2));
+
+            let celsiusInput = prompt("Enter the temperature in Celsius: ");
+            celsiusInput = parseFloat(celsiusInput);
+            let fahrenheitConverted = (celsiusInput * 9/5) + 32;
+            alert("The converted temperature in Fahrenheit is: " + fahrenheitConverted.toFixed(2));
+        };
+    </script>
+</head>
+<body>
+    <h1>Hello, this is js2.html!</h1>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS4</title>
+    <script>
+        window.onload = function() {
+            let number1 = parseInt(prompt("First number in the range: "));
+            let number2 = parseInt(prompt("Second number in the range: "));
+            
+            if (number1 > number2) {
+                let temp = number1;
+                number1 = number2;
+                number2 = temp;
+            }
+            
+            let sum = 0;
+            let oddNumbers = "";
+            
+            for (let i = number1; i <= number2; i++) {
+                sum += i;
+                if (i % 2 !== 0) {
+                    oddNumbers += i + " ";
+                }
+            }
+            document.getElementById("odd").textContent = "Odd numbers in the range: " + oddNumbers;
+            document.getElementById("sum").textContent = "Sum of numbers in the range: " + sum;
+        };
+    </script>
+</head>
+<body>
+    <h1>Hello, I am js4.html!</h1>
+    <p id="odd"></p>
+    <p id="sum"></p>
+</body>
+</html>

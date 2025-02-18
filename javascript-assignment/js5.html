@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS5</title>
+    <script>
+        function timesTable(number) {
+            // the number will be multiplied in this loop and 
+            // output on the page will show <br> by <br>.
+            let output = "";
+            for (let i = 1; i <= 12; i++) {
+                output += `${number} x ${i} = ${number * i}<br>`;
+            }
+            return output;
+        }
+
+        window.onload = function() {
+            // calling the function with 3, 5, and 7
+            let response = document.getElementById("output");
+            response.innerHTML += timesTable(3) + "<hr>";
+            response.innerHTML += timesTable(7) + "<hr>";
+            response.innerHTML += timesTable(11);
+        };
+    </script>
+</head>
+<body>
+    <h1>Hello, I am js5.html!</h1>
+    <div id="output"></div>
+</body>
+</html>

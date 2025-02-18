@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1</title>
+    <script>
+        window.onload = function() {
+            let first = prompt("What is your first name?");
+            let last = prompt("What is your last name?");
+            alert("Your name is " + first + " " + last);
+            
+
+            let numChildren = prompt("How many children do you have?");
+            numChildren = parseInt(numChildren);
+            let message;
+            if (numChildren === 0) {
+                message = "You have no children.";
+            } else if (numChildren === 1) {
+                message = "You have 1 child.";
+            } else {
+                message = "You have " + numChildren + " children.";
+            }
+
+            document.getElementById("children-message").textContent = message;
+        };
+    </script>
+</head>
+<body>
+    <h1>Hello, this js1.html!</h1>
+    <p id="children-message"></p>
+</body>
+</html>
