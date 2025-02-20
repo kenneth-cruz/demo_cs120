@@ -1,5 +1,4 @@
-/* General Styles */
-/* Background Image (Clouds) */
+
 body {
     background: url('clouds.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -9,24 +8,21 @@ body {
     text-align: center;
 }
 
-/* Header Styling */
 header {
-    background-color: #2a6db4; /* Tufts-style blue */
+    background-color: #2a6db4; 
     color: white;
     padding: 15px;
 }
 
-/* Navigation Container */
 .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 15px;
-    flex-wrap: wrap; /* Allows items to stack on small screens */
+    flex-wrap: wrap; 
 }
 
-/* Regular Navigation Links */
 .nav-button {
     color: white;
     text-decoration: none;
@@ -37,10 +33,9 @@ header {
 }
 
 .nav-button:hover {
-    color: #dce7f5; /* Lighter blue on hover */
+    color: #dce7f5; 
 }
 
-/* Outlined Buttons */
 .outlined-button {
     border: 2px solid white;
     padding: 10px 20px;
@@ -55,10 +50,9 @@ header {
 
 .outlined-button:hover {
     background-color: white;
-    color: #2a6db4; /* Blue text when hovered */
+    color: #2a6db4; 
 }
 
-/* Table Styles */
 .song-table {
     width: 60%;
     margin: 20px auto;
@@ -73,7 +67,7 @@ header {
 }
 
 .song-table th {
-    background-color: #2a6db4; /* Tufts-style blue */
+    background-color: #2a6db4; 
     color: white;
 }
 
@@ -85,17 +79,15 @@ header {
     background-color: #ddd;
 }
 
-/* Concert List Container */
 .concert-container {
     width: 65%;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9); /* Light, semi-transparent white */
+    background: rgba(255, 255, 255, 0.9); 
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Concert List Styles (Ordered) */
 .concert-list {
     list-style: decimal;
     padding: 0;
@@ -113,7 +105,6 @@ header {
     border-bottom: none;
 }
 
-/* Form Styling */
 form {
     width: 50%;
     margin: 20px auto;
@@ -174,7 +165,6 @@ textarea {
     background-color: #1d5c99;
 }
 
-/* Text Container Styles */
 .text-container {
     width: 60%;
     margin: 20px auto;
@@ -185,27 +175,22 @@ textarea {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure the main section takes the remaining space */
 main {
     flex: 1;
-    overflow: auto; /* Enables scrolling if content exceeds available space */
-    padding: 100px 20px 60px; /* Adjust padding to fit between header and footer */
+    overflow: auto; 
+    padding: 100px 20px 60px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-
-/* Center Image with Black Border */
-/* Ensure image-container fits within viewport */
 .image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 80%;
-    max-height: 80%;
 }
 
 /* Band Image */
@@ -213,10 +198,9 @@ main {
     width: 100%;
     max-width: 600px;
     max-height: 100%;
-    object-fit: contain; /* Ensures the full image is visible without cropping */
+    object-fit: contain; 
 }
 
-/* Caption Styling */
 .image-caption {
     font-size: 16px;
     font-style: italic;
@@ -228,7 +212,6 @@ main {
 }
 
 
-/* Footer */
 footer {
     background-color: #2a6db4;
     color: white;
@@ -241,20 +224,18 @@ footer {
 
 
 /* MEDIA QUERIES FOR RESPONSIVENESS */
-
-/* Small screens (iPhones, small mobile devices) */
 @media screen and (max-width: 768px) {
     .nav-container {
-        flex-wrap: nowrap; /* Prevents wrapping */
-        gap: 5px; /* Less space between buttons */
-        justify-content: space-evenly; /* Ensures even spacing */
+        flex-wrap: nowrap;
+        gap: 5px; 
+        justify-content: space-evenly;
     }
 
     .outlined-button {
-        font-size: 14px; /* Smaller text */
-        padding: 8px 10px; /* Reduces padding */
-        flex-grow: 1; /* Makes buttons flexible */
-        min-width: auto; /* Prevents excessive width */
+        font-size: 14px; 
+        padding: 8px 10px; 
+        flex-grow: 1; 
+        min-width: auto; 
         text-align: center;
     }
 

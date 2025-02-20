@@ -6,7 +6,6 @@
     <title>Home</title>
     <link rel="stylesheet" href="main.css">
     <style>
-        /* Ensure the page takes full height */
         html, body {
             height: 100%;
             display: flex;
@@ -15,7 +14,6 @@
             padding: 0;
         }
 
-        /* Fixed Header */
         header {
             background-color: #2a6db4;
             color: white;
@@ -25,10 +23,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1000; /* Ensures it stays above content */
+            z-index: 1000; 
         }
 
-        /* Push main content below the fixed header */
         main {
             flex: 1;
             display: flex;
@@ -36,10 +33,9 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 20px 60px; /* Prevents overlap with header/footer */
+            padding: 100px 20px 60px; 
         }
 
-        /* Fixed Footer */
         footer {
             background-color: #2a6db4;
             color: white;
