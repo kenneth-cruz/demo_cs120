@@ -4,14 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Ensure the page takes full height and uses flexbox */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Push the footer to the bottom */
+        main {
+            flex: 1;
+            display: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0px;
+        }
+
+       /* Fixed Footer */
+       footer {
+            background-color: #2a6db4;
+            color: white;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to Schedule Page</h1>
-    <ul>
-        <li><a href="contact_page.html">Contact Page</a></li>
-        <li><a href="about_us.html">About Us</a></li>
-        <li><a href="song_list.html">Song List</a></li>
-    </ul>
-    <button onclick="location.href='index.html'">Home</button>
-</body>
+    <header>
+        <h1>📅 Welcome to the Schedule Page! 🎤</h1>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="outlined-button" > Home </a>
+                <a href="contact_page.html" class="outlined-button">Contact Page</a>
+                <a href="about_us.html" class="outlined-button">About Us</a>
+                <a href="schedule.html" class="outlined-button">Schedule</a>
+                <a href="song_list.html" class="outlined-button">Song List</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Upcoming Concerts</h2>
+        <div class="concert-container">
+            <ol class="concert-list">
+                <li> Denver, CO – Ogden Theatre – April 18, 2025 – <strong>Few Spots Available!</strong></li>
+                <li> Philadelphia, PA – The TLA – May 02, 2025 – <strong>Few Spots Available!</strong></li>
+                <li> Chicago, IL – House of Blues – May 23, 2025 – <strong>Few Spots Available!</strong></li>
+                <li> Denver, CO – Ogden Theatre – July 04, 2025 – <strong>Sold Out</strong></li>
+                <li> Denver, CO – Ogden Theatre – August 08, 2025 – <strong>Few Spots Available!</strong></li>
+                <li> Denver, CO – Ogden Theatre – August 29, 2025 – <strong>Few Spots Available!</strong></li>
+            </ol>
+        </div>
+    </main>
+
+    <footer>
+        <p>KSC Development &copy; 2025  | Tufts University  | 419 Boston Ave, Medford, MA 02155</p>
+    </footer>
 </html>

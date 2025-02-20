@@ -4,14 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song List</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Ensure the page takes full height and uses flexbox */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Push the footer to the bottom */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Footer specific to this page */
+        footer {
+            background-color: #2a6db4;
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to Song List Page</h1>
-    <ul>
-        <li><a href="contact_page.html">Contact Page</a></li>
-        <li><a href="about_us.html">About Us</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-    </ul>
-    <button onclick="location.href='index.html'">Home</button>
+    <header>
+        <h1>🎶 Welcome to the Song Page! 🎵</h1>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="outlined-button" > Home </a>
+                <a href="contact_page.html" class="outlined-button">Contact Page</a>
+                <a href="about_us.html" class="outlined-button">About Us</a>
+                <a href="schedule.html" class="outlined-button">Schedule</a>
+                <a href="song_list.html" class="outlined-button">Song List</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <br /> <br /> <br /> <br /> <br /> <br />  <br /> <br />
+        <h2>Music</h2>
+        <h3>Album: "Rhythms of the Square" (2020)</h3>
+        
+        <table class="song-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Song Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Late Night Serenade</td></tr>
+                <tr><td>2</td><td>Harmonies in the Alley</td></tr>
+                <tr><td>3</td><td>Offbeat Dreams</td></tr>
+                <tr><td>4</td><td>Busker’s Anthem</td></tr>
+                <tr><td>5</td><td>Davis Square Blues</td></tr>
+                <tr><td>6</td><td>Neon Nostalgia</td></tr>
+                <tr><td>7</td><td>Acoustic Echoes</td></tr>
+                <tr><td>8</td><td>Footsteps & Chords</td></tr>
+                <tr><td>9</td><td>Strings of the Past</td></tr>
+                <tr><td>10</td><td>The Final Encore</td></tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>KSC Development &copy; 2025  | Tufts University  | 419 Boston Ave, Medford, MA 02155</p>
+    </footer>
+
 </body>
 </html>

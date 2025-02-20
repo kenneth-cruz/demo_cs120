@@ -4,14 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Ensure the page takes full height and uses flexbox */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Push the footer to the bottom */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Footer specific to this page */
+        footer {
+            background-color: #2a6db4;
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to About Us!</h1>
-    <ul>
-        <li><a href="contact_page.html">Contact Page</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="song_list.html">Song List</a></li>
-    </ul>
-    <button onclick="location.href='index.html'">Home</button>
+    <header>
+        <h1>🎸 Welcome to About Us! 🎶</h1>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="outlined-button" > Home </a>
+                <a href="contact_page.html" class="outlined-button">Contact Page</a>
+                <a href="about_us.html" class="outlined-button">About Us</a>
+                <a href="schedule.html" class="outlined-button">Schedule</a>
+                <a href="song_list.html" class="outlined-button">Song List</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>About the band: Mumbo Jumbo's</h2>
+
+        <div class="text-container">
+            <p>
+                The Mumbo Jumbos is a band unlike any other, formed by four close friends—Ken, Bob, Sammy, and Tom—who met as students at Tufts University back in 2014. What started as late-night jam sessions in their dorm rooms quickly evolved into something greater. After graduation, their shared passion for music led them to officially form The Mumbo Jumbos, blending their unique voices and instrumental talents into a sound that defies genres. Though they all pursued different careers by day, their nights were reserved for harmonies, laughter, and the simple joy of making music together.
+            </p>
+        </div>
+
+        <div class="text-container">
+            <p>
+                Since their formation, The Mumbo Jumbos have become a beloved staple in the Davis Square music scene, bringing their spontaneous performances to local bars, coffee shops, and even the occasional street corner. Their music is a lively mix of classic rock, folk, and a touch of improvisational charm that keeps audiences coming back for more. With no set schedule and no fixed setlist, every performance is a surprise, both for the crowd and sometimes even for the band itself. Whether you're a longtime fan or a passerby lucky enough to catch them in action, The Mumbo Jumbos promise an unforgettable night of music, camaraderie, and pure fun.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>KSC Development &copy; 2025  | Tufts University  | 419 Boston Ave, Medford, MA 02155</p>
+    </footer>
 </body>
 </html>

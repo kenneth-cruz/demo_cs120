@@ -1,0 +1,314 @@
+/* General Styles */
+/* Background Image (Clouds) */
+body {
+    background: url('clouds.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    background-color: #2a6db4; /* Tufts-style blue */
+    color: white;
+    padding: 15px;
+}
+
+/* Navigation Container */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    flex-wrap: wrap; /* Allows items to stack on small screens */
+}
+
+/* Regular Navigation Links */
+.nav-button {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.nav-button:hover {
+    color: #dce7f5; /* Lighter blue on hover */
+}
+
+/* Outlined Buttons */
+.outlined-button {
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    transition: background 0.3s, color 0.3s;
+}
+
+.outlined-button:hover {
+    background-color: white;
+    color: #2a6db4; /* Blue text when hovered */
+}
+
+/* Table Styles */
+.song-table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.song-table th, .song-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.song-table th {
+    background-color: #2a6db4; /* Tufts-style blue */
+    color: white;
+}
+
+.song-table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+.song-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Concert List Container */
+.concert-container {
+    width: 65%;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Light, semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Concert List Styles (Ordered) */
+.concert-list {
+    list-style: decimal;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.concert-list li {
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.concert-list li:last-child {
+    border-bottom: none;
+}
+
+/* Form Styling */
+form {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.name-container {
+    display: flex;
+    gap: 10px;
+}
+
+.name-container input {
+    width: 50%;
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    background-color: #2a6db4;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #1d5c99;
+}
+
+/* Text Container Styles */
+.text-container {
+    width: 60%;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the main section takes the remaining space */
+main {
+    flex: 1;
+    overflow: auto; /* Enables scrolling if content exceeds available space */
+    padding: 100px 20px 60px; /* Adjust padding to fit between header and footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Center Image with Black Border */
+/* Ensure image-container fits within viewport */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Band Image */
+.band-image {
+    width: 100%;
+    max-width: 600px;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the full image is visible without cropping */
+}
+
+/* Caption Styling */
+.image-caption {
+    font-size: 16px;
+    font-style: italic;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+/* Footer */
+footer {
+    background-color: #2a6db4;
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+
+/* Small screens (iPhones, small mobile devices) */
+@media screen and (max-width: 768px) {
+    .nav-container {
+        flex-wrap: nowrap; /* Prevents wrapping */
+        gap: 5px; /* Less space between buttons */
+        justify-content: space-evenly; /* Ensures even spacing */
+    }
+
+    .outlined-button {
+        font-size: 14px; /* Smaller text */
+        padding: 8px 10px; /* Reduces padding */
+        flex-grow: 1; /* Makes buttons flexible */
+        min-width: auto; /* Prevents excessive width */
+        text-align: center;
+    }
+
+    .song-table {
+        width: 90%;
+        font-size: 14px;
+    }
+
+    .concert-container {
+        width: 90%;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .band-image {
+        width: 90%;
+    }
+
+    .text-container {
+        width: 90%;
+    }
+}
+
+/* Medium screens (iPads, tablets) */
+@media screen and (max-width: 1024px) {
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+
+    .outlined-button {
+        font-size: 17px;
+    }
+
+    .concert-container {
+        width: 80%;
+    }
+
+    form {
+        width: 70%;
+    }
+
+    .band-image {
+        width: 75%;
+    }
+
+    .text-container {
+        width: 80%;
+    }
+}

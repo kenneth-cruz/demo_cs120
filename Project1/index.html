@@ -4,14 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Ensure the page takes full height */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fixed Header */
+        header {
+            background-color: #2a6db4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensures it stays above content */
+        }
+
+        /* Push main content below the fixed header */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px; /* Prevents overlap with header/footer */
+        }
+
+        /* Fixed Footer */
+        footer {
+            background-color: #2a6db4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Mumbo-Jumbo's Band Webpage! (HomePage)</h1>
-    <ul>
-        <li><a href="contact_page.html">Contact Page</a></li>
-        <li><a href="about_us.html">About Us</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="song_list.html">Song List</a></li>
-    </ul>
+    <header>
+        <h1>The Mumbo-Jumbos' Band Webpage 🐘🐘 🎵🎵</h1>
+        <nav>
+            <div class="nav-container">
+                <a href="contact_page.html" class="outlined-button">Contact Page</a>
+                <a href="about_us.html" class="outlined-button">About Us</a>
+                <a href="schedule.html" class="outlined-button">Schedule</a>
+                <a href="song_list.html" class="outlined-button">Song List</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <br /> <br /> <br /> <br /> 
+        <div class="image-container">
+            <img src="band_pic2.jpg" alt="Band performing at Tufts" class="band-image" >
+            <p class="image-caption">AI generated image of the 4 main band members performing at Tufts</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>KSC Development &copy; 2025  | Tufts University  | 419 Boston Ave, Medford, MA 02155</p>
+    </footer>
 </body>
 </html>
