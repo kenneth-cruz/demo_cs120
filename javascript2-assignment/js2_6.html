@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        window.onload = function() {
+            const stateOptions = ["Alabama", "Alaska", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Rhode Island"];
+            const stateSelect = document.getElementById("stateList");
+            
+            stateOptions.map((state, index) => {
+                let option = document.createElement("option");
+                option.value = state;
+                option.textContent = state;
+                if (index === 0) option.selected = true;
+                stateSelect.appendChild(option);
+            });
+        };
+
+        function addState() {
+            let selectedState = document.getElementById("stateList").value;
+            let stateDiv = document.getElementById("stateDisplay");
+            let newState = document.createElement("p");
+            newState.textContent = selectedState;
+            stateDiv.appendChild(newState);
+        }
+
+        function clearStates() {
+            document.getElementById("stateDisplay").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome to JS 2-6</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+    
+    <h3>Select a State</h3>
+    <select id="stateList" size="11"></select>
+    <button onclick="addState()">Add State</button>
+    
+    <h3>Selected States</h3>
+    <div id="stateDisplay" style="border: 1px solid black; padding: 10px; min-height: 50px; max-width: 15%;"></div>
+    <br>
+    <button onclick="clearStates()">Clear States</button>
+</body>
+</html>

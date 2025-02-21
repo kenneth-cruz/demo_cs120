@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        function speak(event) {
+            let name = document.getElementById("username").value;
+            let prefix = event.target.innerText;
+            alert(prefix + " " + name);
+            console.log('speak function called!');
+        }
+
+        window.onload = function() {
+            document.getElementById("helloButton").onclick = speak;
+            document.getElementById("goodbyeButton").onclick = speak;
+            document.getElementById("greetingsButton").onclick = speak;
+        };
+    </script>
+</head>
+<body>
+    <h2>Welcome to JS 2-5</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+    
+    <h3>Name Form</h3>
+    <form onsubmit="return false;">
+        <label for="username">Please enter your name:</label>
+        <input type="text" id="username" name="username">
+        <br><br>
+        <button type="button" id="helloButton">Hello</button>
+        <button type="button" id="goodbyeButton">Good Bye</button>
+        <button type="button" id="greetingsButton">Greetings</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        function countWords() {
+            let sentence = prompt("Please enter a sentence:");
+            if (sentence) {
+                let words = sentence.split(" ");
+                let numberWords = words.length;
+                document.getElementById("numberWords").innerText = "Number of words calculated: " + numberWords;
+            }
+        }
+    </script>
+</head>
+<body onload="countWords()">
+    <h2>Welcome to JS 2-2</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+    
+    <p id="numberWords"></p>
+
+</body>
+</html>

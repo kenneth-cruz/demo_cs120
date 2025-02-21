@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        function speak(prefix) {
+            let name = document.getElementById("person").value;
+            alert(prefix + " " + name);
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome to JS 2-4</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+    <br><br>
+
+    <h3>Name Form</h3>
+    <form onsubmit="return false;">
+        <label for="person">Please enter your name:</label>
+        <input type="text" id="person" name="person">
+        <br><br>
+        <button type="button" onclick="speak('Hello')">Hello</button>
+        <button type="button" onclick="speak('Good Bye')">Good Bye</button>
+        <button type="button" onclick="speak('Greetings')">Greetings</button>
+    </form>
+</body>
+</html>

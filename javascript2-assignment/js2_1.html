@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+
+        function count(arr, value) {
+            let count = 0;
+            arr.forEach(num => {
+                if (num < value) count++;
+            });
+            return count;
+        }
+
+        function testCount() {
+            const numbers = [3, 55, 30, 28, 9, 12];
+            const value = 10;
+            const result = count(numbers, value);
+            document.getElementById("answer").innerText = "Count of numbers less than " + value + " is: " + result;
+            console.log('testCount function called')
+        }
+
+        window.onload = testCount;
+
+    </script>
+</head>
+<body>
+    <h2>Welcome to JS2_1</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+
+    <br /> <br />
+    <div id="answer"></div>
+
+</body>
+</html>

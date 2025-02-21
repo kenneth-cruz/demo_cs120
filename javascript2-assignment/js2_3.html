@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS2</title>
+    <script>
+        function displayNames() {
+            let names = "Bob, Ken, Sam, Frank, Tom";
+            let nameArray = names.split(", ");
+            //iterate over array and create li per element.
+            let list = nameArray.map((name, index) => `<li>${name}</li>`).join("");
+            document.getElementById("list").innerHTML = `<ol>${list}</ol>`;
+            //console.log('displayNames was called!')
+        }
+    </script>
+</head>
+<body onload="displayNames()">
+    <h2>Welcome to JS 2-3</h2>
+    <h3>by Ken Cruz CS-120</h3>
+    
+    <button onclick="window.location.href='js2.html'">Home</button>
+    
+    <div id="list"></div>
+</body>
+</html>
