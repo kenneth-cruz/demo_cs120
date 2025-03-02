@@ -1,0 +1,51 @@
+[
+    {
+      "title": "Break My Soul",
+      "artist": "Beyonce",
+      "year": 2022,
+      "genres": ["Pop", "Dance"]
+    },
+    {
+      "title": "Cuff It",
+      "artist": "Beyonce",
+      "year": 2022,
+      "genres": ["R&B"]
+    },
+    {
+      "title": "Alien Superstar",
+      "artist": "Beyonce",
+      "year": 2022,
+      "genres": ["Pop"]
+    },
+    {
+      "title": "Moscow Mule",
+      "artist": "Bad Bunny",
+      "year": 2022,
+      "genres": ["Reggaeton"]
+    },
+    {
+      "title": "Ojitos Lindos",
+      "artist": "Bad Bunny",
+      "year": 2022,
+      "genres": ["Reggaeton", "Pop"]
+    },
+    {
+      "title": "Tití Me Preguntó",
+      "artist": "Bad Bunny",
+      "year": 2022,
+      "genres": ["Reggaeton"]
+    },
+    {
+      "title": "Slime You Out",
+      "artist": "Drake",
+      "year": 2023,
+      "genres": ["Hip-Hop"]
+    },
+    {
+      "title": "Falling Back",
+      "artist": "Drake",
+      "year": 2023,
+      "genres": ["Hip-Hop"]
+    }
+  ]
+  

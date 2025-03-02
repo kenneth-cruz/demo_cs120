@@ -3,9 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <title>JSON2.html</title>
+  <!-- Include jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .song {
+      margin-bottom: 20px;
+    }
+    .song h2 {
+      margin: 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .song p {
+      margin: 4px 0;
+    }
+    .song p strong {
+      font-weight: normal;
+      color: #333;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $.get("songs.json", function(data) {
+        // Store the JSON data in a variable
+        var songsData = data;
+        var displayHtml = "";
+
+        // Build HTML for each song
+        for (var i = 0; i < songsData.length; i++) {
+          var song = songsData[i];
+          displayHtml += "<div class='song'>";
+          displayHtml += "<h2>" + song.title + "</h2>";
+          displayHtml += "<p><strong>Artist:</strong> " + song.artist + "</p>";
+          displayHtml += "<p><strong>Genre:</strong> " + song.genres.join(", ") + "</p>";
+          displayHtml += "<p>Released " + song.year + "</p>";
+          displayHtml += "</div>";
+        }
+
+        // Insert the generated HTML into the page
+        $("#jsonDisplay").html(displayHtml);
+      });
+    });
+  </script>
 </head>
 <body>
-  <h1>Welcome to JSON2.html</h1>
+  <h1>Song List from JSON File</h1>
+  <div id="jsonDisplay"></div>
   <p>
     <button onclick="window.location.href='json.html';">home</button>
   </p>

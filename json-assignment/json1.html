@@ -3,9 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>JSON1.html</title>
+  <script>
+    // JSON representing a song list
+    var songList = [
+      {
+        "title": "Break My Soul",
+        "artist": "Beyonce",
+        "year": 2022,
+        "genres": ["Pop", "Dance"]
+      },
+      {
+        "title": "Cuff It",
+        "artist": "Beyonce",
+        "year": 2022,
+        "genres": ["R&B"]
+      },
+      {
+        "title": "Alien Superstar",
+        "artist": "Beyonce",
+        "year": 2022,
+        "genres": ["Pop"]
+      },
+      {
+        "title": "Moscow Mule",
+        "artist": "Bad Bunny",
+        "year": 2022,
+        "genres": ["Reggaeton"]
+      },
+      {
+        "title": "Ojitos Lindos",
+        "artist": "Bad Bunny",
+        "year": 2022,
+        "genres": ["Reggaeton", "Pop"]
+      },
+      {
+        "title": "Tití Me Preguntó",
+        "artist": "Bad Bunny",
+        "year": 2022,
+        "genres": ["Reggaeton"]
+      },
+      {
+        "title": "Slime You Out",
+        "artist": "Drake",
+        "year": 2023,
+        "genres": ["Hip-Hop"]
+      },
+      {
+        "title": "Falling Back",
+        "artist": "Drake",
+        "year": 2023,
+        "genres": ["Hip-Hop"]
+      }
+    ];
+
+    // Convert the JSON object to a formatted string
+    var songListString = JSON.stringify(songList, null, 2);
+
+    // Once the page loads, display the JSON string in the pre element
+    window.onload = function() {
+      document.getElementById('jsonDisplay').textContent = songListString;
+    };
+  </script>
 </head>
 <body>
   <h1>Welcome to JSON1.html</h1>
+  <pre id="jsonDisplay"></pre>
   <p>
     <button onclick="window.location.href='json.html';">home</button>
   </p>
