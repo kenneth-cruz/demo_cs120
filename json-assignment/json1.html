@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>JSON1.html</title>
   <script>
-    // JSON representing a song list
+    // JSON represents song list 
+    // with artist, year, genres.
     var songList = [
       {
         "title": "Break My Soul",
@@ -56,10 +57,10 @@
       }
     ];
 
-    // Convert the JSON object to a formatted string
+    // JSON -> string
     var songListString = JSON.stringify(songList, null, 2);
 
-    // Once the page loads, display the JSON string in the pre element
+    // JSON-string in that element by ID.
     window.onload = function() {
       document.getElementById('jsonDisplay').textContent = songListString;
     };

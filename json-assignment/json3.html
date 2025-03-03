@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>JSON3.html</title>
-  <!-- Include jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
       $.get("songs.json", function(data) {
-        // Store the JSON data in a variable
+        // Store JSON in variable like in json2
         var songsData = data;
 
-        // Collect all unique genres
+        // Group the Genres
         var genreSet = new Set();
         for (var i = 0; i < songsData.length; i++) {
           var song = songsData[i];
@@ -20,20 +19,20 @@
           }
         }
 
-        // Convert the Set to an array and optionally sort it
+        // Convert the Set to an array and sort
         var genreArray = Array.from(genreSet).sort();
 
-        // Populate the <select> with the unique genres
+        // Fill <select> drop down with unique genres
         for (var k = 0; k < genreArray.length; k++) {
           $("#genreSelect").append("<option value='" + genreArray[k] + "'>" + genreArray[k] + "</option>");
         }
 
-        // Filter button click event
-        $("#filterBtn").click(function() {
+        
+        $("#filterButton").click(function() {
           var selectedGenre = $("#genreSelect").val();
           var displayHtml = "";
 
-          // Find and display titles of songs matching the selected genre
+          // Find fill in display
           for (var i = 0; i < songsData.length; i++) {
             var song = songsData[i];
             if (song.genres.includes(selectedGenre)) {
@@ -41,7 +40,7 @@
             }
           }
 
-          // Display the results
+          // Display  results
           $("#filteredSongs").html(displayHtml);
         });
       });
@@ -54,9 +53,8 @@
   <form>
     <label for="genreSelect">Select Genre:</label>
     <select id="genreSelect">
-      <!-- Options will be populated dynamically from songs.json -->
     </select>
-    <button type="button" id="filterBtn">Filter</button>
+    <button type="button" id="filterButton">Filter</button>
   </form>
   
   <div id="filteredSongs"></div>
