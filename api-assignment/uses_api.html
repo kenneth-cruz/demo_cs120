@@ -28,20 +28,20 @@
   <h1>Currency Converter</h1>
   <h2>Select Base Currency</h2>
   <div id="baseCurrencyButtons">
-    <button class="btn base-button" data-code="USD">USD</button>
-    <button class="btn base-button" data-code="EUR">EUR</button>
-    <button class="btn base-button" data-code="JPY">JPY</button>
+    <button class="btn base-button" currency-code="USD">USD</button>
+    <button class="btn base-button" currency-code="EUR">EUR</button>
+    <button class="btn base-button" currency-code="JPY">JPY</button>
   </div>
 
   <h2>Select Target Currency</h2>
   <div id="targetCurrencyButtons">
-    <button class="btn target-button" data-code="EUR">EUR</button>
-    <button class="btn target-button" data-code="JPY">JPY</button>
-    <button class="btn target-button" data-code="USD">USD</button>
-    <button class="btn target-button" data-code="CHF">CHF</button>
-    <button class="btn target-button" data-code="MXN">MXN</button>
-    <button class="btn target-button" data-code="CAD">CAD</button>
-    <button class="btn target-button" data-code="AUD">AUD</button>
+    <button class="btn target-button" currency-code="EUR">EUR</button>
+    <button class="btn target-button" currency-code="JPY">JPY</button>
+    <button class="btn target-button" currency-code="USD">USD</button>
+    <button class="btn target-button" currency-code="CHF">CHF</button>
+    <button class="btn target-button" currency-code="MXN">MXN</button>
+    <button class="btn target-button" currency-code="CAD">CAD</button>
+    <button class="btn target-button" currency-code="AUD">AUD</button>
   </div>
 
   <div id="conversionResult"></div>
@@ -99,7 +99,7 @@
       button.addEventListener('click', () => {
         clearSelection(baseButtons);
         button.classList.add('selected');
-        selectedBase = button.getAttribute('data-code');
+        selectedBase = button.getAttribute('currency-code');
         updateConversion();
       });
     });
@@ -110,7 +110,7 @@
       button.addEventListener('click', () => {
         clearSelection(targetButtons);
         button.classList.add('selected');
-        selectedTarget = button.getAttribute('data-code');
+        selectedTarget = button.getAttribute('currency-code');
         updateConversion();
       });
     });
