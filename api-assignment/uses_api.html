@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .btn {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .selected {
+      background-color: #e78e8e;
+    }
+    #conversionResult {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Currency Converter</h1>
+  <h2>Select Base Currency</h2>
+  <div id="baseCurrencyButtons">
+    <button class="btn base-button" data-code="USD">USD</button>
+    <button class="btn base-button" data-code="EUR">EUR</button>
+    <button class="btn base-button" data-code="JPY">JPY</button>
+  </div>
+
+  <h2>Select Target Currency</h2>
+  <div id="targetCurrencyButtons">
+    <button class="btn target-button" data-code="EUR">EUR</button>
+    <button class="btn target-button" data-code="JPY">JPY</button>
+    <button class="btn target-button" data-code="USD">USD</button>
+    <button class="btn target-button" data-code="CHF">CHF</button>
+    <button class="btn target-button" data-code="MXN">MXN</button>
+    <button class="btn target-button" data-code="CAD">CAD</button>
+    <button class="btn target-button" data-code="AUD">AUD</button>
+  </div>
+
+  <div id="conversionResult"></div>
+
+  <script>
+    let selectedBase = null;
+    let selectedTarget = null;
+    const apiKey = 'fca_live_EZRGFEdhyKjhYCoWTStAh1fQG6r8NYpyD5Y8xxMQ';
+
+    // Helper function to remove the selection, to allow you to re-select
+    function clearSelection(buttons) {
+      buttons.forEach(btn => btn.classList.remove('selected'));
+    }
+
+    // Function to fetch Currency Conversion data
+    function fetchConversion(baseCurrency, targetCurrency) {
+      const resultDiv = document.getElementById('conversionResult');
+      resultDiv.innerHTML = 'Loading...';
+      // API fetch uses variables for api key and the currency selected
+      const url = `https://api.freecurrencyapi.com/v1/latest?apikey=${apiKey}&base_currency=${baseCurrency}`;
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response failure');
+          }
+          return response.json();
+        })
+        // if successful, then display this info.
+        .then(data => {
+          const rates = data.data;
+          if (rates[targetCurrency] !== undefined) {
+            resultDiv.innerHTML = `1 ${baseCurrency} = ${rates[targetCurrency]} ${targetCurrency}`;
+          } else 
+          // if there is so missing data in API, usually not
+          {
+            resultDiv.innerHTML = 'Conversion rate not available for the selected target currency.';
+          }
+        })
+        .catch(error => {
+          resultDiv.innerHTML = 'Error retrieving data.';
+          console.error('Error fetching data:', error);
+        });
+    }
+
+    // Check then fetch conversion
+    function updateConversion() {
+      if (selectedBase && selectedTarget) {
+        fetchConversion(selectedBase, selectedTarget);
+      }
+    }
+
+    // Event listeners for base currency, and to clear previous selections
+    const baseButtons = document.querySelectorAll('.base-button');
+    baseButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        clearSelection(baseButtons);
+        button.classList.add('selected');
+        selectedBase = button.getAttribute('data-code');
+        updateConversion();
+      });
+    });
+
+    // Event listeners for target currency, and to clear previous selections
+    const targetButtons = document.querySelectorAll('.target-button');
+    targetButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        clearSelection(targetButtons);
+        button.classList.add('selected');
+        selectedTarget = button.getAttribute('data-code');
+        updateConversion();
+      });
+    });
+  </script>
+</body>
+</html>
