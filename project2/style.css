@@ -1,0 +1,85 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 18px;
+    text-align: center;
+  }
+  
+  #board {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 6px;
+    justify-content: center;
+    margin: 18px auto;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ccc;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    line-height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  /* Correct letter + Correct Position = Green  */
+  .correct-position {
+    background-color: rgb(69, 191, 69);
+    color: white;
+  }
+  
+  /* Correct letter + Wrong Position = Yellow  */
+  .wrong-position {
+    background-color: yellow;
+    color: black;
+  }
+  
+  /* All Correct Letters = Win  */
+  .winner {
+    background-color: rgb(69, 191, 69);
+    color: white;
+  }
+  
+  #used-letters {
+    margin: 18px auto;
+    font-weight: bold;
+  }
+  
+  #used-letters p {
+    margin: 6px 0;
+  }
+  
+  .input-container {
+    margin: 18px auto;
+  }
+  
+  #guess-input {
+    width: 100px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+  
+  #restart-container {
+    margin-top: 18px;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 600px) {
+    #board {
+      grid-template-columns: repeat(5, 35px);
+      grid-gap: 3px;
+    }
+    .cell {
+      width: 35px;
+      height: 35px;
+      font-size: 1.2rem;
+      line-height: 35px;
+    }
+    #guess-input {
+      width: 80px;
+    }
+  }
+  

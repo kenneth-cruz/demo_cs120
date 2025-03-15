@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Wordle Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Welcome to Wordle!</h1>
+
+  <div id="board"></div>
+
+  <!-- Letter Board + 3 categories -->
+  <div id="used-letters">
+    <p id="correct-letters">Correct place: </p>
+    <p id="wrong-letters">Wrong place: </p>
+    <p id="none-letters">Not in word: </p>
+  </div>
+
+  <!-- Display Average # of tries to win, extra credit -->
+  <div id="average-display"></div>
+
+  <div class="input-container">
+    <label for="guess-input">What is your Guess?</label>
+    <input type="text" id="guess-input" maxlength="5" />
+    <button id="guess-button">Check my Guess</button>
+  </div>
+
+  <div id="restart-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
