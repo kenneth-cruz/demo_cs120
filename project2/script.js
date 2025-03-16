@@ -38,19 +38,26 @@ function cookieHelper(name, value, days) {
   
   // fetch 5 letter word from api
   // function works asynchronously
-  async function fetchRandomFiveLetterWord() {
+  const fetchRandomFiveLetterWord = async () => {
     try {
-      const response = await fetch("https://random-word-api.herokuapp.com/word?length=5");
+      const response = await fetch("https://api.datamuse.com/words?sp=?????&max=1000");
       const data = await response.json();  
-      let randomFetchWord = data[0].toUpperCase();
+  
+      if (!data.length) {
+        throw new Error("No words returned from Datamuse");
+      }
+      const randomObj = data[Math.floor(Math.random() * data.length)];
+     let randomFetchWord = randomObj.word.toUpperCase();
       console.log("API fetched word:", randomFetchWord);
+  
       return randomFetchWord;
     } catch (error) {
       console.error("Error fetching word from API, using fallback:", error);
-      // manual random pick from my "dictionary"
+      // Return backup is API fails
       return fallbackWords[Math.floor(Math.random() * fallbackWords.length)];
     }
-  }
+  };
+  
   
  // Game Board State
   let gameState = {
@@ -98,8 +105,8 @@ function cookieHelper(name, value, days) {
     wrong_letter.textContent   = "Wrong place: ";
     none_letter.textContent    = "Not in word: ";
   
-    // organize the appearrance of the HTML 
-    for (let letter in gameState.usedLettersStatus) {
+    
+    Object.keys(gameState.usedLettersStatus).forEach(letter => {
       let status = gameState.usedLettersStatus[letter];
       if (status === "correct") {
         correct_letter.textContent += letter + " ";
@@ -108,7 +115,7 @@ function cookieHelper(name, value, days) {
       } else {
         none_letter.textContent += letter + " ";
       }
-    }
+    });
   }
   
   // making the baord.
