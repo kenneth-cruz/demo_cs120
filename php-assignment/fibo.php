@@ -1,9 +1,8 @@
 <?php
-// Get the 'n' parameter from the query string
-
+// n parameter from querystring
 $n = isset($_GET['n']) ? intval($_GET['n']) : 0;
 
-// Initialize the Fibonacci sequence
+// init fibonacci sequence
 $fibSequence = [];
 
 if ($n > 0) {
@@ -13,18 +12,18 @@ if ($n > 1) {
     $fibSequence[] = 1;
 }
 
-// Generate the Fibonacci sequence up to length n
+// generate sequence up to length n
 for ($i = 2; $i < $n; $i++) {
     $fibSequence[] = $fibSequence[$i - 1] + $fibSequence[$i - 2];
 }
 
-// Prepare the result
-$result = [
+// setting up final_result into an easy to read array
+$final_result = [
     'length' => $n,
     'fibSequence' => $fibSequence
 ];
 
-// Output the result as JSON
+// Output JSON
 header('Content-Type: application/json');
-echo json_encode($result);
+echo json_encode($final_result);
 ?>

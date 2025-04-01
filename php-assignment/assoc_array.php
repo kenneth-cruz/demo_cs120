@@ -4,16 +4,16 @@
     <title>Business Hours</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif, sans-serif;
         }
 
         .hours-container {
-            width: 300px;
-            margin: 20px auto;
+            width: 280px;
+            margin: 18px auto;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            background-color: #f9f9f9;
+            background-color: skyblue;
         }
 
         .day-hours {
@@ -29,20 +29,20 @@
 </head>
 <body>
     <div class="hours-container">
-        <h2>Business Hours</h2>
+        <h3>Business Hours</h3>
         <?php
-        // Step 2: Create associative array of business hours
+        // Associative array 
         $businessHours = [
-            "Monday" => "9am - 4pm",
-            "Tuesday" => "9am - 4pm",
-            "Wednesday" => "9am - 4pm",
-            "Thursday" => "9am - 4pm",
+            "Monday" => "9am - 6pm",
+            "Tuesday" => "9am - 5pm",
+            "Wednesday" => "9am - 5pm",
+            "Thursday" => "9am - 5pm",
             "Friday" => "9am - 4pm",
-            "Saturday" => "10am - 2pm",
+            "Saturday" => "10am - 3pm",
             "Sunday" => "Closed"
         ];
 
-        // Step 3: Function to format hours
+        // Format the hours, display string
         function displayHours($hoursArray) {
             $output = "";
             foreach ($hoursArray as $day => $hours) {
@@ -51,7 +51,7 @@
             return $output;
         }
 
-        // Step 4: Output business hours
+        // displaying on the page
         echo displayHours($businessHours);
         ?>
     </div>
