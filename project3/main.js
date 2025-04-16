@@ -4,14 +4,14 @@ const products = [
     name: "Banana",
     price: 1.0,
     description: "A ripe and sweet banana.",
-    image: "/images/banana.jpeg"
+    image: "images/banana.jpg"
   },
   {
     id: 2,
     name: "Strawberry",
     price: 0.2,
     description: "Fresh and juicy strawberry.",
-    image: "/images/strawberry.jpg"
+    image: "images/strawberry.jpg"
   },
   {
     id: 3,
