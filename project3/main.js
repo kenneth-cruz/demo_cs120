@@ -36,26 +36,37 @@ const products = [
   }
 ];
 
-  
-  function renderProducts() {
-    const list = document.getElementById("product-list");
-    if (!list) return;
-    products.forEach(p => {
-      const div = document.createElement("div");
-      div.className = "product";
-      div.innerHTML = `
-        <img src="${p.image}" alt="${p.name}" width="150">
-        <h2>${p.name}</h2>
-        <p>$${p.price}</p>
-        <select id="qty-${p.id}">
-          ${[1,2,3,4,5].map(n => `<option value="${n}">${n}</option>`).join('')}
-        </select>
-        <button onclick="addToCart(${p.id})">Add to Cart</button>
-        <button onclick="alert('${p.description}')">More</button>
-      `;
-      list.appendChild(div);
-    });
+function renderProducts() {
+  const list = document.getElementById("product-list");
+  if (!list) return;
+
+  products.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" width="150">
+      <h2>${p.name}</h2>
+      <p>$${p.price}</p>
+      <select id="qty-${p.id}">
+        ${[1,2,3,4,5].map(n => `<option value="${n}">${n}</option>`).join('')}
+      </select>
+      <button onclick="addToCart(${p.id})">Add to Cart</button>
+      <button onclick="toggleDescription(${p.id})">More</button>
+      <div id="desc-${p.id}" class="description" style="display: none; margin-top: 10px;">
+        <p>${p.description}</p>
+      </div>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function toggleDescription(id) {
+  const desc = document.getElementById(`desc-${id}`);
+  if (desc) {
+    desc.style.display = desc.style.display === "none" ? "block" : "none";
   }
+}
+
   
   function addToCart(id) {
     const qty = parseInt(document.getElementById(`qty-${id}`).value);
