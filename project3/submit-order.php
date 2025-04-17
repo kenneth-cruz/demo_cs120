@@ -24,10 +24,19 @@ if (!$data || !is_array($data)) {
   exit;
 }
 
-// Prepare arrays for up to 5 items
-$item_ids = array_column($data, 'id');
-$item_qtys = array_column($data, 'qty');
+// Prepare arrays
+$item_ids = is_array($data) ? array_column($data, 'id') : [];
+$item_qtys = is_array($data) ? array_column($data, 'qty') : [];
 $values = [];
+
+for ($i = 0; $i < 5; $i++) {
+  $values[] = isset($item_ids[$i]) ? $item_ids[$i] : null;
+  $values[] = isset($item_qtys[$i]) ? $item_qtys[$i] : null;
+}
+while (count($values) < 10) {
+  $values[] = null;
+}
+
 
 // Populate placeholders
 for ($i = 0; $i < 5; $i++) {
