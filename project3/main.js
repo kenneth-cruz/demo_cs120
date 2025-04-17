@@ -146,9 +146,51 @@ function toggleDescription(id) {
     `;
   }
   
+  function renderOrders() {
+    const container = document.getElementById("order-history");
+    if (!container) return;
+  
+    fetch("get-orders.php")
+      .then(res => res.json())
+      .then(data => {
+        if (!data.length) {
+          container.innerHTML = "<p>No orders yet.</p>";
+          return;
+        }
+  
+        data.forEach(order => {
+          const div = document.createElement("div");
+          div.className = "order";
+  
+          const date = new Date(order.date).toLocaleString();
+  
+          const itemsHTML = order.items.map(item =>
+            `<li>${item.name} - Qty: ${item.qty} - $${item.price.toFixed(2)} each = $${item.subtotal.toFixed(2)}</li>`
+          ).join("");
+  
+          div.innerHTML = `
+            <h3>Order #${order.id}</h3>
+            <p><strong>Date:</strong> ${date}</p>
+            <ul>${itemsHTML}</ul>
+            <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+          `;
+  
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        console.error("Error loading orders:", err);
+        container.innerHTML = "<p>Error loading orders.</p>";
+      });
+  }
+  
+  
+
   document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     renderCart();
     renderThankYou();
+    renderOrders();
   });
+  
   
