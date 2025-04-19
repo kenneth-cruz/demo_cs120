@@ -1,3 +1,5 @@
+// array of my 5 fruits for hippo mart.
+
 const products = [
   {
     id: 1,
@@ -36,6 +38,8 @@ const products = [
   }
 ];
 
+// Renders all products as HTML page products page
+
 function renderProducts() {
   const list = document.getElementById("product-list");
   if (!list) return;
@@ -60,6 +64,8 @@ function renderProducts() {
   });
 }
 
+// click on the more button to see description
+
 function toggleDescription(id) {
   const desc = document.getElementById(`desc-${id}`);
   if (desc) {
@@ -67,6 +73,7 @@ function toggleDescription(id) {
   }
 }
 
+// add to localstorage cart
 function addToCart(id) {
   const qty = parseInt(document.getElementById(`qty-${id}`).value);
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -99,11 +106,15 @@ function renderCart() {
     container.appendChild(div);
   });
 
+  // do the summation to get your order total, appear as new div
+
   const totalDiv = document.getElementById("cart-total");
   if (totalDiv) {
     totalDiv.innerHTML = `Order Total: $${total.toFixed(2)}`;
   }
 }
+
+//page refresh + removing cart item
 
 function removeFromCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -114,7 +125,7 @@ function removeFromCart(id) {
 
 function checkout() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  console.log("Cart payload:", cart);
+  console.log("Cart items:", cart);
 
   fetch("submit-order.php", {
     method: "POST",
@@ -129,7 +140,7 @@ function checkout() {
       localStorage.removeItem("cart");
       window.location.href = "thankyou.html";
     } else {
-      alert("Error saving your order:\n" + message);
+      alert("Error saving order:\n" + message);
     }
   });
 }
@@ -143,7 +154,7 @@ function renderThankYou() {
   date.setDate(date.getDate() + 2);
 
   container.innerHTML = `
-    <h2>Thank you for your order!</h2>
+    <h2>Thank you for ordering from E-Hippo-Mart!</h2>
     <p>Your total is $${parseFloat(total).toFixed(2)}</p>
     <p>Expected shipping date: ${date.toDateString()}</p>
   `;
@@ -151,6 +162,8 @@ function renderThankYou() {
   localStorage.removeItem("orderTotal");
 }
 
+// Loads previous orders from the backend and displays on html page
+// orders display as cards
 function renderOrders() {
   const container = document.getElementById("order-history");
   if (!container) return;
@@ -158,7 +171,7 @@ function renderOrders() {
   fetch("get-orders.php")
     .then(res => res.json())
     .then(data => {
-      console.log("Full order data from backend:", data); // ✅ NOW INSIDE
+      console.log("Full order data (array):", data); 
 
       if (!Array.isArray(data) || data.length === 0) {
         container.innerHTML = "<p>No orders found.</p>";
@@ -194,13 +207,12 @@ function renderOrders() {
       });
     })
     .catch(err => {
-      console.error("Error loading orders:", err);
-      container.innerHTML = "<p>Error loading orders.</p>";
+      console.error("Error loading these orders!:", err);
+      container.innerHTML = "<p>Error loading your orders!</p>";
     });
 }
 
-
-
+// when page loads, run this
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   renderCart();

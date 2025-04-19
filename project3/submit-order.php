@@ -1,50 +1,48 @@
 <?php
-// Enable error display for debugging (you can remove this in production)
+// Enable error display 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// SiteGround MySQL credentials
+// MySQL credentials
 $servername = "localhost";
 $username = "uluevwtfuq0h5";
 $password = "Bendetson123";
 $dbname = "dbxuaptzuvc3qs";
 
-// Connect to MySQL
+// Connecting
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
   http_response_code(500);
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Read cart data from the fetch() body
+// Read cart data 
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Validate incoming data
+// Validation
 if (!$data || !is_array($data)) {
   http_response_code(400);
   echo "Invalid cart data.";
   exit;
 }
 
-// Extract item IDs and quantities
+// Extract fruit Ids and Qtys
 $item_ids = array_column($data, 'id');
 $item_qtys = array_column($data, 'qty');
 
-// Prepare values array for up to 5 items (10 values total)
+// Prepare values array for up to 5 items 
 $values = [];
 for ($i = 0; $i < 5; $i++) {
   $values[] = isset($item_ids[$i]) ? $item_ids[$i] : null;
   $values[] = isset($item_qtys[$i]) ? $item_qtys[$i] : null;
 }
 
-// Ensure exactly 10 values
 while (count($values) < 10) {
   $values[] = null;
 }
 
-// Prepare SQL insert
+// SQL insert
 $stmt = $conn->prepare("
   INSERT INTO orders (
     item1_id, item1_qty, item2_id, item2_qty, 
@@ -53,7 +51,7 @@ $stmt = $conn->prepare("
   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ");
 
-// Check if prepare failed
+// Error checking
 if (!$stmt) {
   http_response_code(500);
   die("Prepare failed: " . $conn->error);

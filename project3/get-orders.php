@@ -1,6 +1,8 @@
 <?php
 header("Content-Type: application/json");
 
+// connect to Mysql db with credentials
+
 $servername = "localhost";
 $username = "uluevwtfuq0h5";
 $password = "Bendetson123";
@@ -44,7 +46,9 @@ while ($row = $result->fetch_assoc()) {
 
     $total = array_reduce($items, fn($sum, $item) => $sum + $item["subtotal"], 0);
 
-    if (count($items) > 0) { // ✅ Only include orders with items
+    // only orders that had an item
+    
+    if (count($items) > 0) { 
     $orders[] = [
         "id" => $row["id"],
         "date" => $row["date_ordered"],
