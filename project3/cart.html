@@ -8,7 +8,10 @@
 </head>
 <body>
   <header>
-    <h1>Shop Logo</h1>
+    <div class="logo-nav">
+      <img src="images/e-hippo-mart-logo.png" alt="e-hippo-mart logo" class="logo">
+      <h1>E-hippo-mart</h1>
+    </div>
     <nav>
       <a href="products.html">Products</a>
       <a href="cart.html">Cart</a>
@@ -18,13 +21,16 @@
 
   <main id="cart-items">
     <!-- Cart items rendered here -->
-  <div id="cart-total"></div>
   </main>
-  <footer id="cart-buttons">
+  
+  <div id="cart-summary">
+    <h3 id="cart-total">Order Total: $0.00</h3>
     <div class="button-group">
       <button onclick="window.location.href='products.html'">Continue Shopping</button>
       <button onclick="checkout()">Check Out</button>
     </div>
+  </div>
+  
   </footer>  
 </body>
 </html>

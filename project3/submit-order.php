@@ -1,4 +1,8 @@
 <?php
+// Enable error display for debugging (you can remove this in production)
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // SiteGround MySQL credentials
 $servername = "localhost";
 $username = "uluevwtfuq0h5";
@@ -24,34 +28,38 @@ if (!$data || !is_array($data)) {
   exit;
 }
 
-// Prepare arrays
-$item_ids = is_array($data) ? array_column($data, 'id') : [];
-$item_qtys = is_array($data) ? array_column($data, 'qty') : [];
-$values = [];
+// Extract item IDs and quantities
+$item_ids = array_column($data, 'id');
+$item_qtys = array_column($data, 'qty');
 
+// Prepare values array for up to 5 items (10 values total)
+$values = [];
 for ($i = 0; $i < 5; $i++) {
   $values[] = isset($item_ids[$i]) ? $item_ids[$i] : null;
   $values[] = isset($item_qtys[$i]) ? $item_qtys[$i] : null;
 }
+
+// Ensure exactly 10 values
 while (count($values) < 10) {
   $values[] = null;
 }
 
-
-// Populate placeholders
-for ($i = 0; $i < 5; $i++) {
-  $values[] = isset($item_ids[$i]) ? $item_ids[$i] : NULL;
-  $values[] = isset($item_qtys[$i]) ? $item_qtys[$i] : NULL;
-}
-
-// Prepare and run INSERT
-$stmt = $conn->prepare(
-  "INSERT INTO orders (
+// Prepare SQL insert
+$stmt = $conn->prepare("
+  INSERT INTO orders (
     item1_id, item1_qty, item2_id, item2_qty, 
     item3_id, item3_qty, item4_id, item4_qty, 
     item5_id, item5_qty
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-);
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+");
+
+// Check if prepare failed
+if (!$stmt) {
+  http_response_code(500);
+  die("Prepare failed: " . $conn->error);
+}
+
+// Bind values and execute
 $stmt->bind_param("iiiiiiiiii", ...$values);
 
 if ($stmt->execute()) {

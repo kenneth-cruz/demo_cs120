@@ -67,130 +67,143 @@ function toggleDescription(id) {
   }
 }
 
-  
-  function addToCart(id) {
-    const qty = parseInt(document.getElementById(`qty-${id}`).value);
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const item = cart.find(i => i.id === id);
-    if (item) item.qty += qty;
-    else cart.push({ id, qty });
-    localStorage.setItem("cart", JSON.stringify(cart));
-    window.location.href = "cart.html";
-  }
-  
-  function renderCart() {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const container = document.getElementById("cart-items");
-    if (!container) return;
-  
-    let total = 0;
-    cart.forEach(item => {
-      const product = products.find(p => p.id === item.id);
-      const itemTotal = product.price * item.qty;
-      total += itemTotal;
-      const div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `
-        <h3>${product.name}</h3>
-        <p>Qty: ${item.qty}</p>
-        <p>Price: $${product.price}</p>
-        <p>Total: $${itemTotal}</p>
-        <button onclick="removeFromCart(${item.id})">Remove from cart</button>
-      `;
-      container.appendChild(div);
-    });
-  
-    const totalDiv = document.getElementById("cart-total");
-    totalDiv.innerHTML = `<h3>Order Total: $${total}</h3>`;
-  }
-  
-  function removeFromCart(id) {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart = cart.filter(item => item.id !== id);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    location.reload();
-  }
-  
-  function checkout() {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  
-    fetch("submit-order.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(cart)
-    }).then(res => {
-      if (res.ok) {
-        const total = cart.reduce((sum, item) =>
-          sum + item.qty * products.find(p => p.id === item.id).price, 0);
-        localStorage.setItem("orderTotal", total);
-        localStorage.removeItem("cart");
-        window.location.href = "thankyou.html";
-      } else {
-        alert("Error saving your order.");
-      }
-    });
-  }
-  
-  
-  function renderThankYou() {
-    const total = localStorage.getItem("orderTotal");
-    const container = document.getElementById("thank-you-message");
-    const date = new Date();
-    date.setDate(date.getDate() + 2);
-    container.innerHTML = `
-      <h2>Thank you for your order!</h2>
-      <p>Your total is $${total}</p>
-      <p>Expected shipping date: ${date.toDateString()}</p>
-    `;
-  }
-  
-  function renderOrders() {
-    const container = document.getElementById("order-history");
-    if (!container) return;
-  
-    fetch("get-orders.php")
-      .then(res => res.json())
-      .then(data => {
-        if (!data.length) {
-          container.innerHTML = "<p>No orders yet.</p>";
-          return;
-        }
-  
-        data.forEach(order => {
-          const div = document.createElement("div");
-          div.className = "order";
-  
-          const date = new Date(order.date).toLocaleString();
-  
-          const itemsHTML = order.items.map(item =>
-            `<li>${item.name} - Qty: ${item.qty} - $${item.price.toFixed(2)} each = $${item.subtotal.toFixed(2)}</li>`
-          ).join("");
-  
-          div.innerHTML = `
-            <h3>Order #${order.id}</h3>
-            <p><strong>Date:</strong> ${date}</p>
-            <ul>${itemsHTML}</ul>
-            <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
-          `;
-  
-          container.appendChild(div);
-        });
-      })
-      .catch(err => {
-        console.error("Error loading orders:", err);
-        container.innerHTML = "<p>Error loading orders.</p>";
-      });
-  }
-  
-  
+function addToCart(id) {
+  const qty = parseInt(document.getElementById(`qty-${id}`).value);
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const item = cart.find(i => i.id === id);
+  if (item) item.qty += qty;
+  else cart.push({ id, qty });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "cart.html";
+}
 
-  document.addEventListener("DOMContentLoaded", () => {
-    renderProducts();
-    renderCart();
-    renderThankYou();
-    renderOrders();
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const container = document.getElementById("cart-items");
+  if (!container) return;
+
+  let total = 0;
+  cart.forEach(item => {
+    const product = products.find(p => p.id === item.id);
+    const itemTotal = product.price * item.qty;
+    total += itemTotal;
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <h3>${product.name}</h3>
+      <p>Qty: ${item.qty}</p>
+      <p>Price: $${product.price}</p>
+      <p>Total: $${itemTotal.toFixed(2)}</p>
+      <button onclick="removeFromCart(${item.id})">Remove from cart</button>
+    `;
+    container.appendChild(div);
   });
-  
-  
+
+  const totalDiv = document.getElementById("cart-total");
+  if (totalDiv) {
+    totalDiv.innerHTML = `Order Total: $${total.toFixed(2)}`;
+  }
+}
+
+function removeFromCart(id) {
+  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+function checkout() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  console.log("Cart payload:", cart);
+
+  fetch("submit-order.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(cart)
+  }).then(async res => {
+    const message = await res.text();
+    if (res.ok) {
+      const total = cart.reduce((sum, item) =>
+        sum + item.qty * products.find(p => p.id === item.id).price, 0);
+      localStorage.setItem("orderTotal", total);
+      localStorage.removeItem("cart");
+      window.location.href = "thankyou.html";
+    } else {
+      alert("Error saving your order:\n" + message);
+    }
+  });
+}
+
+function renderThankYou() {
+  const container = document.getElementById("thank-you-message");
+  if (!container) return;
+
+  const total = localStorage.getItem("orderTotal");
+  const date = new Date();
+  date.setDate(date.getDate() + 2);
+
+  container.innerHTML = `
+    <h2>Thank you for your order!</h2>
+    <p>Your total is $${parseFloat(total).toFixed(2)}</p>
+    <p>Expected shipping date: ${date.toDateString()}</p>
+  `;
+
+  localStorage.removeItem("orderTotal");
+}
+
+function renderOrders() {
+  const container = document.getElementById("order-history");
+  if (!container) return;
+
+  fetch("get-orders.php")
+    .then(res => res.json())
+    .then(data => {
+      console.log("Full order data from backend:", data); // ✅ NOW INSIDE
+
+      if (!Array.isArray(data) || data.length === 0) {
+        container.innerHTML = "<p>No orders found.</p>";
+        return;
+      }
+
+      data.forEach(order => {
+        const div = document.createElement("div");
+        div.className = "order";
+
+        const date = new Date(order.date + ' UTC').toLocaleString("en-US", {
+          timeZone: "America/New_York",
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit"
+        });
+
+        const itemsHTML = order.items.map(item =>
+          `<li>${item.name} - Qty: ${item.qty} - $${item.price.toFixed(2)} each = $${item.subtotal.toFixed(2)}</li>`
+        ).join("");
+
+        div.innerHTML = `
+          <h3>Order #${order.id}</h3>
+          <p><strong>Date:</strong> ${date}</p>
+          <ul>${itemsHTML}</ul>
+          <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+        `;
+
+        container.appendChild(div);
+      });
+    })
+    .catch(err => {
+      console.error("Error loading orders:", err);
+      container.innerHTML = "<p>Error loading orders.</p>";
+    });
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts();
+  renderCart();
+  renderThankYou();
+  renderOrders();
+});
